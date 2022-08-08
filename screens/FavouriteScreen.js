@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { FetchPeople } from "../service";
 import { useEffect } from "react";
 
-const ContactScreen = ({ navigation }) => {
+const FavouriteScreen = ({ navigation }) => {
     const dispatch = useDispatch();
     useEffect(() => {
         FetchPeople(dispatch);
@@ -13,12 +13,12 @@ const ContactScreen = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <Header navigation={navigation} />
-            <ProfileList title="contact" />
+            <ProfileList title="favourite" />
         </View>
     );
 }
 
-export default ContactScreen;
+export default FavouriteScreen;
 
 const styles = StyleSheet.create({
     container: {
