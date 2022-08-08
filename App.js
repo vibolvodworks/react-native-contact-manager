@@ -1,20 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import {React, useEffect } from "react";
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
+import HomeScreen from './screens/HomeScreen';
+import ContactScreen from './screens/ContactScreen';
+import { Provider, useDispatch } from 'react-redux';
+import { store } from './redux/store';
+import { FetchPeople } from "./service";
+
+const Drawer = createDrawerNavigator();
 
 export default function App() {
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   FetchPeople(dispatch);
+  // });
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Drawer.Navigator screenOptions={{ headerShown: false }} useLegacyImplementation initialRouteName="Home">
+          <Drawer.Screen name="Home" component={HomeScreen} />
+          <Drawer.Screen name="Contact" component={ContactScreen} />
+        </Drawer.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
