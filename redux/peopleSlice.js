@@ -10,10 +10,14 @@ const peopleSlice = createSlice({
         getPeople: (state, action) => {
             state.people = action.payload,
             state.loading = false
+        },
+        patchPeople: (state, action) => {
+            state.people = action.payload,
+            state.loading = false
         }
     }
 });
 
-export const {getPeople} = peopleSlice.actions;
+export const {getPeople, patchPeople} = peopleSlice.actions;
 
 export default peopleSlice.reducer;

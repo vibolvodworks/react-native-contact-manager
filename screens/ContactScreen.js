@@ -12,8 +12,8 @@ const ContactScreen = ({ navigation }) => {
     });
     return (
         <View style={styles.container}>
-            <Header navigation={navigation} />
-            <ProfileList title="contact" />
+            <Header title="Contact" navigation={navigation} />
+            <ProfileList navigation={navigation} title="contact" />
         </View>
     );
 }

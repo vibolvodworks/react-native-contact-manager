@@ -12,8 +12,8 @@ const HomeScreen = ({ navigation }) => {
     });
     return (
         <View style={styles.container}>
-            <Header navigation={navigation} />
-            <ProfileList title="people" />
+            <Header title="People" navigation={navigation} />
+            <ProfileList navigation={navigation} title="people" />
         </View>
     );
 }

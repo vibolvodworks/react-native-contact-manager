@@ -1728,6 +1728,15 @@
   dependencies:
     "nanoid" "^3.1.23"
 
+"@react-navigation/stack@^6.2.2":
+  "integrity" "sha512-P9ZfmluOXNmbs7YdG1UWS1fAh87Yse9aX8TgqOz4FlHEm5q7g5eaM35QgWByt+wif3UiqE40D8wXpqRQvMgPWg=="
+  "resolved" "https://registry.npmjs.org/@react-navigation/stack/-/stack-6.2.2.tgz"
+  "version" "6.2.2"
+  dependencies:
+    "@react-navigation/elements" "^1.3.4"
+    "color" "^4.2.3"
+    "warn-once" "^0.1.0"
+
 "@reduxjs/toolkit@^1.8.3":
   "integrity" "sha512-lU/LDIfORmjBbyDLaqFN2JB9YmAT1BElET9y0ZszwhSBa5Ef3t6o5CrHupw5J1iOXwd+o92QfQZ8OJpwXvsssg=="
   "resolved" "https://registry.npmjs.org/@reduxjs/toolkit/-/toolkit-1.8.3.tgz"

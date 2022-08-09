@@ -12,8 +12,8 @@ const FavouriteScreen = ({ navigation }) => {
     });
     return (
         <View style={styles.container}>
-            <Header navigation={navigation} />
-            <ProfileList title="favourite" />
+            <Header title="Favourite" navigation={navigation} />
+            <ProfileList navigation={navigation} title="favourite" />
         </View>
     );
 }

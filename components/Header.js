@@ -1,9 +1,9 @@
-import { Button, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import AntIcon from "react-native-vector-icons/AntDesign";
 import SearchBar from './SearchBar';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
-const Header = ({ navigation }) => {
+const Header = ({ title, navigation }) => {
   return (
     <View style={styles.header}>
       <View style={{ flex: 1, flexDirection: "row" }}>
@@ -15,7 +15,7 @@ const Header = ({ navigation }) => {
           </TouchableOpacity>
         </View>
         <View>
-          <Text>Contact</Text>
+          <Text>{title}</Text>
           <Text>509 Total</Text>
         </View>
       </View>

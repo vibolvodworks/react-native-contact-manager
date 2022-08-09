@@ -1,9 +1,9 @@
-import { StyleSheet, Image, Text, View } from 'react-native';
+import { StyleSheet, FlatList } from 'react-native';
 import Profile from './Profile';
 import { useSelector } from 'react-redux';
 
 
-export default function ProfileList({ title }) {
+export default function ProfileList({navigation, title }) {
   const state = useSelector((state) => state);
   let people = state.peopleReducer.people;
   if (title === "contact") {
@@ -12,11 +12,15 @@ export default function ProfileList({ title }) {
     people = people.filter(person => person.isFavourite);
   }
   return (
-    <View style={styles.profileContainer}>
-      {
-        people.map((person) => <Profile data={person} />)
+    <FlatList data={people} renderItem={
+      (itemData) => {
+        return <Profile navigation={navigation} title={title} data={itemData.item} />;
       }
-    </View>
+    }
+      keyExtractor={(item, index) => {
+        return item.key;
+      }}
+    />
   );
 }
 
