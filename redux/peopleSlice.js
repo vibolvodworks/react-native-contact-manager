@@ -21,6 +21,7 @@ const peopleSlice = createSlice({
         },
         patchPeople: (state, action) => {
             state.people = action.payload,
+            state.filterPeople= action.payload,
             state.loading = false
         }
     }
