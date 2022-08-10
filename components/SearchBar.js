@@ -1,10 +1,13 @@
 import { StyleSheet, View, TextInput } from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const SearchBar = () => {
+const SearchBar = ({onSearch}) => {
+    const onSearchHandler = (text) => {
+        onSearch(text);
+    }
     return (
         <View style={styles.searchBar}>
-            <TextInput style={styles.searchInput} />
+            <TextInput onChangeText={(text) => onSearchHandler(text.toLowerCase())} style={styles.searchInput} />
             <Icon color="#161924" name="search" size={25} />
         </View>
     );
@@ -19,7 +22,7 @@ const styles = StyleSheet.create({
         padding: 2
     },
     searchInput: {
-        width: 250,
+        width: 240,
         height: 35,
         marginRight: 5,
         color: '#161924'

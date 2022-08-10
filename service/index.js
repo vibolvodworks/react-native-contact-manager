@@ -10,6 +10,7 @@ export const FetchPeople = async (dispatch) => {
         Object.entries(peopleReponse).forEach(([index, value]) => {
             people.push({ ...value, key: index });
         });
+        console.log('testing');
         dispatch(getPeople(people));
     } catch (error) {
         console.error(error);

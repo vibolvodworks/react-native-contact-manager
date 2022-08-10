@@ -1,17 +1,33 @@
-import {StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import AntIcon from "react-native-vector-icons/AntDesign";
 import SearchBar from './SearchBar';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 import { CONTACTS, FAVOURITES } from '../constants';
+import { filterPeople } from '../redux/peopleSlice';
+import { useEffect, useState } from 'react';
+import { SearchPeople } from '../redux/peopleAction';
 
 const Header = ({ title, navigation }) => {
+  const dispatch = useDispatch();
   const state = useSelector((state) => state);
+  const [totalContact, setTotalContact] = useState(0);
+
   let people = state.peopleReducer.people;
   if (title === CONTACTS) {
     people = people.filter(person => person.isContact);
   } else if (title === FAVOURITES) {
     people = people.filter(person => person.isFavourite);
+  }
+
+  useEffect(() => {
+    setTotalContact(people.length)
+  }, [people]);
+
+  const onSearchHandler = (searchTerm) => {
+    people = SearchPeople(people, searchTerm);
+    setTotalContact(people.length);
+    dispatch(filterPeople({people: people, searchTerm: searchTerm}));
   }
 
   return (
@@ -26,12 +42,12 @@ const Header = ({ title, navigation }) => {
         </View>
         <View>
           <Text>{title}</Text>
-          <Text>{people.length} Total</Text>
+          <Text>{totalContact} Total</Text>
         </View>
       </View>
       <View style={styles.userAction}>
-        <SearchBar />
-        <AntIcon onPress={() => navigation.navigate('CreatePeopleScreen', {profileUpdated: null})} color="#161924" name="adduser" size={25} />
+        <SearchBar onSearch={onSearchHandler} />
+        <AntIcon onPress={() => navigation.navigate('CreatePeopleScreen', { profileUpdated: null })} color="#161924" name="adduser" size={25} />
       </View>
     </View>
   );
