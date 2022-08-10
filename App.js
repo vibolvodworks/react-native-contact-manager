@@ -1,14 +1,14 @@
-import { React, useEffect } from "react";
+import { React } from "react";
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import HomeScreen from './screens/HomeScreen';
 import ContactScreen from './screens/ContactScreen';
 import FavouriteScreen from "./screens/FavouriteScreen";
-import { Provider, useDispatch } from 'react-redux';
+import { Provider } from 'react-redux';
 import { store } from './redux/store';
-import { FetchPeople } from "./service";
 import DetailScreen from "./screens/DetailScreen";
+import CreatePeopleScreen from "./screens/CreatePeopleScreen";
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -25,10 +25,7 @@ const Root = () => {
 }
 
 export default function App() {
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   FetchPeople(dispatch);
-  // });
+
   return (
     <Provider store={store}>
       <NavigationContainer>
@@ -38,7 +35,14 @@ export default function App() {
             component={Root}
             options={{ headerShown: false }}
           />
-          <Stack.Screen options={{headerShown: false}} name="DetailScreen" component={DetailScreen} />
+          <Stack.Screen name="DetailScreen" component={DetailScreen} />
+          <Stack.Screen
+            options={{
+              title: "Create New"
+            }}
+            name="CreatePeopleScreen"
+            component={CreatePeopleScreen}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

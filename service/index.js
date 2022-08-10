@@ -28,10 +28,9 @@ export const UpdatePeople = async (people, key, updateData, dispatch) => {
             }
         )
         const peopleReponse = (await response.json());
-        console.log(peopleReponse, 'update');
         let peopleUpdated = people.map((person) => {
             if (person.id === peopleReponse.id) {
-                return {...peopleReponse, key: key};
+                return { ...peopleReponse, key: key };
             }
             return person;
         });
@@ -40,4 +39,21 @@ export const UpdatePeople = async (people, key, updateData, dispatch) => {
     } catch (error) {
         console.error(error);
     }
+}
+
+export const CreatePeople = async (userInput, dispatch) => {
+    try {
+        await fetch(
+            FIREBASE_URL + "people.json",
+            {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(userInput)
+            }
+        )
+    } catch (error) {
+        console.error(error);
+    }
+
+    FetchPeople(dispatch);
 }

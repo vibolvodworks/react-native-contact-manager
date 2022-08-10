@@ -1,9 +1,8 @@
-import { useCallback } from "react";
+import { useCallback, useLayoutEffect } from "react";
 import { Text, View, Image, StyleSheet, Linking } from "react-native";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import AntIcon from "react-native-vector-icons/AntDesign";
 import { useDispatch, useSelector } from "react-redux";
-import DetailHeader from "../components/DetialHeader";
 import { UpdatePeople } from "../service";
 
 const DetailScreen = ({ route, navigation }) => {
@@ -14,6 +13,15 @@ const DetailScreen = ({ route, navigation }) => {
     let peopleDetial = people.find((person) => {
         return person.id === profile.id;
     });
+
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            title: title,
+            headerRight: () => (
+                <Text onPress={() => navigation.navigate('CreatePeopleScreen', {profileUpdated: peopleDetial})} style={{ paddingRight: 10, color: "#348ceb" }}>Edit</Text>
+            ),
+        });
+    }, [navigation]);
 
     const onAddContact = () => {
         let updateData = {... peopleDetial, isContact : true};
@@ -45,7 +53,6 @@ const DetailScreen = ({ route, navigation }) => {
     }, []);
     return (
         <ScrollView>
-            <DetailHeader title={title} navigation={navigation} />
             <View style={styles.container}>
                 <View>
                     <Image style={styles.image} source={require('../assets/profile-img.jpg')} resizeMode="cover" />
