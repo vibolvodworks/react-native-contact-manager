@@ -2,8 +2,18 @@ import {StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import AntIcon from "react-native-vector-icons/AntDesign";
 import SearchBar from './SearchBar';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import { useSelector } from 'react-redux';
+import { CONTACTS, FAVOURITES } from '../constants';
 
 const Header = ({ title, navigation }) => {
+  const state = useSelector((state) => state);
+  let people = state.peopleReducer.people;
+  if (title === CONTACTS) {
+    people = people.filter(person => person.isContact);
+  } else if (title === FAVOURITES) {
+    people = people.filter(person => person.isFavourite);
+  }
+
   return (
     <View style={styles.header}>
       <View style={{ flex: 1, flexDirection: "row" }}>
@@ -16,7 +26,7 @@ const Header = ({ title, navigation }) => {
         </View>
         <View>
           <Text>{title}</Text>
-          <Text>509 Total</Text>
+          <Text>{people.length} Total</Text>
         </View>
       </View>
       <View style={styles.userAction}>

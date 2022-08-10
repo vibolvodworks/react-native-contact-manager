@@ -4,6 +4,7 @@ import ProfileList from "../components/ProfileList";
 import { useDispatch } from "react-redux";
 import { FetchPeople } from "../service";
 import { useEffect } from "react";
+import { PEOPLE } from "../constants";
 
 const HomeScreen = ({ navigation }) => {
     const dispatch = useDispatch();
@@ -12,8 +13,8 @@ const HomeScreen = ({ navigation }) => {
     });
     return (
         <View style={styles.container}>
-            <Header title="People" navigation={navigation} />
-            <ProfileList navigation={navigation} title="people" />
+            <Header title={PEOPLE} navigation={navigation} />
+            <ProfileList navigation={navigation} title={PEOPLE} />
         </View>
     );
 }

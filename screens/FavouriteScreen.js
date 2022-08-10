@@ -4,6 +4,7 @@ import ProfileList from "../components/ProfileList";
 import { useDispatch } from "react-redux";
 import { FetchPeople } from "../service";
 import { useEffect } from "react";
+import { FAVOURITES } from "../constants";
 
 const FavouriteScreen = ({ navigation }) => {
     const dispatch = useDispatch();
@@ -12,8 +13,8 @@ const FavouriteScreen = ({ navigation }) => {
     });
     return (
         <View style={styles.container}>
-            <Header title="Favourite" navigation={navigation} />
-            <ProfileList navigation={navigation} title="favourite" />
+            <Header title={FAVOURITES} navigation={navigation} />
+            <ProfileList navigation={navigation} title={FAVOURITES} />
         </View>
     );
 }

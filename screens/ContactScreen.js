@@ -4,6 +4,7 @@ import ProfileList from "../components/ProfileList";
 import { useDispatch } from "react-redux";
 import { FetchPeople } from "../service";
 import { useEffect } from "react";
+import { COMPANIES, CONTACTS } from "../constants";
 
 const ContactScreen = ({ navigation }) => {
     const dispatch = useDispatch();
@@ -12,8 +13,8 @@ const ContactScreen = ({ navigation }) => {
     });
     return (
         <View style={styles.container}>
-            <Header title="Contact" navigation={navigation} />
-            <ProfileList navigation={navigation} title="contact" />
+            <Header title={COMPANIES} navigation={navigation} />
+            <ProfileList navigation={navigation} title={CONTACTS} />
         </View>
     );
 }
