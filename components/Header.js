@@ -47,7 +47,7 @@ const Header = ({ title, navigation }) => {
       </View>
       <View style={styles.userAction}>
         <SearchBar onSearch={onSearchHandler} />
-        <AntIcon onPress={() => navigation.navigate('CreatePeopleScreen', { profileUpdated: null })} color="#161924" name="adduser" size={25} />
+        <AntIcon style={{marginTop: 7}}  onPress={() => navigation.navigate('CreatePeopleScreen', { profileUpdated: null })} color="#348ceb" name="adduser" size={25} />
       </View>
     </View>
   );

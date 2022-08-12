@@ -8,7 +8,7 @@ const SearchBar = ({onSearch}) => {
     return (
         <View style={styles.searchBar}>
             <TextInput onChangeText={(text) => onSearchHandler(text.toLowerCase())} style={styles.searchInput} />
-            <Icon color="#161924" name="search" size={25} />
+            <Icon style={{marginTop: 5}} color="#c9c8c5" name="search" size={20} />
         </View>
     );
 }
