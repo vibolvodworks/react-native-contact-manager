@@ -20,8 +20,8 @@ const CustomSidebarMenu = (props) => {
                     source={require('../assets/profile-img.jpg')}
                     style={styles.image}
                 />
-                <View style={{alignItems: "center"}}>
-                    <Text style={{fontWeight: "bold", fontSize: 20}}>Vibol</Text>
+                <View style={{ alignItems: "center" }}>
+                    <Text style={{ fontWeight: "bold", fontSize: 20 }}>Vibol</Text>
                     <Text>Dev at Vodworks</Text>
                 </View>
             </View>

@@ -27,7 +27,7 @@ const Header = ({ title, navigation }) => {
   const onSearchHandler = (searchTerm) => {
     people = SearchPeople(people, searchTerm);
     setTotalContact(people.length);
-    dispatch(filterPeople({people: people, searchTerm: searchTerm}));
+    dispatch(filterPeople({ people: people, searchTerm: searchTerm }));
   }
 
   return (
@@ -47,7 +47,11 @@ const Header = ({ title, navigation }) => {
       </View>
       <View style={styles.userAction}>
         <SearchBar onSearch={onSearchHandler} />
-        <AntIcon style={{marginTop: 7}}  onPress={() => navigation.navigate('CreatePeopleScreen', { profileUpdated: null })} color="#348ceb" name="adduser" size={25} />
+        <AntIcon
+          style={{ marginTop: 7 }}
+          onPress={() => navigation.navigate('CreatePeopleScreen', { profileUpdated: null, title: 'Create New' })}
+          color="#348ceb" name="adduser" size={25}
+        />
       </View>
     </View>
   );

@@ -20,10 +20,10 @@ const Stack = createStackNavigator();
 const Root = () => {
   return (
     <Drawer.Navigator drawerContent={(props) => <CustomSidebarMenu {...props} />} screenOptions={{ headerShown: false }} useLegacyImplementation initialRouteName="Home">
-      <Drawer.Screen options={{drawerIcon: () => <Ionicon name="home" size={23} />}} name="Home" component={HomeScreen} />
-      <Drawer.Screen options={{drawerIcon: () => <Ionicon name="people" size={23} />}} name="People" component={HomeScreen} />
-      <Drawer.Screen options={{drawerIcon: () => <AntIcon name="contacts" size={23} />}} name="Contact" component={ContactScreen} />
-      <Drawer.Screen options={{drawerIcon: () => <MaterialIcons name="favorite" size={23} />}} name="Favourite" component={FavouriteScreen} />
+      <Drawer.Screen options={{ drawerIcon: () => <Ionicon name="home" size={23} /> }} name="Home" component={HomeScreen} />
+      <Drawer.Screen options={{ drawerIcon: () => <Ionicon name="people" size={23} /> }} name="People" component={HomeScreen} />
+      <Drawer.Screen options={{ drawerIcon: () => <AntIcon name="contacts" size={23} /> }} name="Contact" component={ContactScreen} />
+      <Drawer.Screen options={{ drawerIcon: () => <MaterialIcons name="favorite" size={23} /> }} name="Favourite" component={FavouriteScreen} />
     </Drawer.Navigator>
   );
 }

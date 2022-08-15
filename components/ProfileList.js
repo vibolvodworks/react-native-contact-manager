@@ -1,6 +1,6 @@
 import { StyleSheet, FlatList } from 'react-native';
 import Profile from './Profile';
-import { useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 import { CONTACTS, FAVOURITES } from '../constants';
 
 export default function ProfileList({ navigation, title }) {

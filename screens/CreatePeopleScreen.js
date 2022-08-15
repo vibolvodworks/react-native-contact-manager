@@ -5,23 +5,29 @@ import { CreatePeople, UpdatePeople } from "../service";
 
 const CreatePeopleScreen = ({ route, navigation }) => {
     const state = useSelector(state => state);
-    const { profileUpdated } = route.params;
+    const { profileUpdated, title } = route.params;
     const isEdit = profileUpdated !== null;
-    const people = state.peopleReducer.people;;
+    const people = state.peopleReducer.people;
+
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            title: title
+        });
+    }, [navigation]);
 
     const dispatch = useDispatch();
     const toggleSwitchContact = () => setUserInput((previousData) => {
-        return {...previousData, isContact: !previousData.isContact}
+        return { ...previousData, isContact: !previousData.isContact }
     });
     const toggleSwitchFavourite = () => setUserInput((previousData) => {
-        return {...previousData, isFavourite: !previousData.isFavourite}
+        return { ...previousData, isFavourite: !previousData.isFavourite }
     });
     const [userInput, setUserInput] = useState(
         {
             "avatar": "link",
             "city": profileUpdated !== null ? profileUpdated.city : "",
             "company": profileUpdated !== null ? profileUpdated.company : "",
-            "id": isEdit ? profileUpdated.id :  Math.random().toString(),
+            "id": isEdit ? profileUpdated.id : Math.random().toString(),
             "isContact": profileUpdated !== null ? profileUpdated.isContact : false,
             "isFavourite": profileUpdated !== null ? profileUpdated.isFavourite : false,
             "name": profileUpdated !== null ? profileUpdated.name : "",
@@ -37,56 +43,56 @@ const CreatePeopleScreen = ({ route, navigation }) => {
 
     const onChangeTextNameHandler = (text) => {
         setUserInput((previousData) => {
-            return {...previousData, name: text}
+            return { ...previousData, name: text }
         });
     }
 
     const onChangeTextCityHandler = (text) => {
         setUserInput((previousData) => {
-            return {...previousData, city: text}
+            return { ...previousData, city: text }
         });
     }
 
     const onChangeTextCompanyHandler = (text) => {
         setUserInput((previousData) => {
-            return {...previousData, company: text}
+            return { ...previousData, company: text }
         });
     }
 
     const onChangeTextPostionHandler = (text) => {
         setUserInput((previousData) => {
-            return {...previousData, position: text}
+            return { ...previousData, position: text }
         });
     }
 
     const onChangeTextFacebookHandler = (text) => {
         setUserInput((previousData) => {
-            return {...previousData, social_networks: {...previousData.social_networks, facebook: text}}
+            return { ...previousData, social_networks: { ...previousData.social_networks, facebook: text } }
         });
     }
 
     const onChangeTextLinkedinHandler = (text) => {
         setUserInput((previousData) => {
-            return {...previousData, social_networks: {...previousData.social_networks, linkedin: text}}
+            return { ...previousData, social_networks: { ...previousData.social_networks, linkedin: text } }
         });
     }
 
     const onChangeTextTwitterHandler = (text) => {
         setUserInput((previousData) => {
-            return {...previousData, social_networks: {...previousData.social_networks, twitter: text}}
+            return { ...previousData, social_networks: { ...previousData.social_networks, twitter: text } }
         });
     }
 
     const onChangeTextInstagramHandler = (text) => {
         setUserInput((previousData) => {
-            return {...previousData, social_networks: {...previousData.social_networks, instagram: text}}
+            return { ...previousData, social_networks: { ...previousData.social_networks, instagram: text } }
         });
     }
 
     const onCreateHandler = (userInput) => {
-        if(isEdit) {
+        if (isEdit) {
             UpdatePeople(people, profileUpdated.key, userInput, dispatch);
-            navigation.navigate("DetailScreen", {profile: userInput});
+            navigation.navigate("DetailScreen", { profile: userInput });
         } else {
             CreatePeople(userInput, dispatch);
             navigation.navigate("Home");
@@ -139,7 +145,7 @@ const CreatePeopleScreen = ({ route, navigation }) => {
             </View>
             <View style={styles.inputContainer}>
                 <Text>Social Networks</Text>
-                <TextInput value={userInput.social_networks.facebook}  onChangeText={(text) => onChangeTextFacebookHandler(text)} style={styles.inputItem} placeholder="Facebook" />
+                <TextInput value={userInput.social_networks.facebook} onChangeText={(text) => onChangeTextFacebookHandler(text)} style={styles.inputItem} placeholder="Facebook" />
                 <TextInput value={userInput.social_networks.twitter} onChangeText={(text) => onChangeTextTwitterHandler(text)} style={styles.inputItem} placeholder="Twitter" />
                 <TextInput value={userInput.social_networks.linkedin} onChangeText={(text) => onChangeTextLinkedinHandler(text)} style={styles.inputItem} placeholder="Linkedin" />
                 <TextInput value={userInput.social_networks.instagram} onChangeText={(text) => onChangeTextInstagramHandler(text)} style={styles.inputItem} placeholder="Instagram" />

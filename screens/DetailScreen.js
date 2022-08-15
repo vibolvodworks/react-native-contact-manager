@@ -18,7 +18,7 @@ const DetailScreen = ({ route, navigation }) => {
         navigation.setOptions({
             title: title,
             headerRight: () => (
-                <Text onPress={() => navigation.navigate('CreatePeopleScreen', {profileUpdated: peopleDetial})} style={{ paddingRight: 10, color: "#348ceb" }}>Edit</Text>
+                <Text onPress={() => navigation.navigate('CreatePeopleScreen', {profileUpdated: peopleDetial, title: 'Edit ' + peopleDetial.name})} style={{ paddingRight: 10, color: "#348ceb" }}>Edit</Text>
             ),
         });
     }, [navigation]);
