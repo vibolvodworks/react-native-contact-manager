@@ -22,7 +22,7 @@ const Header = ({ title, navigation }) => {
 
   useEffect(() => {
     setTotalContact(people.length)
-  }, [people]);
+  }, []);
 
   const onSearchHandler = (searchTerm) => {
     people = SearchPeople(people, searchTerm);
