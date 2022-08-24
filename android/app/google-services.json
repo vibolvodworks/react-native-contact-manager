@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "244665647064",
+    "firebase_url": "https://contact-manager-bea8c-default-rtdb.firebaseio.com",
+    "project_id": "contact-manager-bea8c",
+    "storage_bucket": "contact-manager-bea8c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:244665647064:android:689a18df2ec464ba4dbcad",
+        "android_client_info": {
+          "package_name": "com.contactmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "244665647064-jmfa9tic6oki7lh52ig6v6adcstqpoe6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.contactmanager",
+            "certificate_hash": "4febb1dd787d540eb2a1fa61045edf5a7f921cdd"
+          }
+        },
+        {
+          "client_id": "244665647064-jrgv29v65s66jeup8kjn8ffqm2eilhaa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQkshxKIOXyEr5dSPBeVJAxzqx4da_ZrY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "244665647064-jrgv29v65s66jeup8kjn8ffqm2eilhaa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

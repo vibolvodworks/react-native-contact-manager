@@ -1,4 +1,4 @@
-import { React } from "react";
+import { React, useEffect } from "react";
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
@@ -13,6 +13,7 @@ import Ionicon from 'react-native-vector-icons/Ionicons';
 import AntIcon from "react-native-vector-icons/AntDesign";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import CustomSidebarMenu from "./screens/CustomSidebarMenu";
+import messaging from '@react-native-firebase/messaging';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -29,7 +30,25 @@ const Root = () => {
 }
 
 export default function App() {
+  useEffect(() => {
+    messaging().onMessage(async remoteMessage => {
+      console.log('A new FCM message arrived!', JSON.stringify(remoteMessage));
+    });
+    messaging().onNotificationOpenedApp(remoteMessage => {
+      console.log('onNotificationOpenapp', JSON.stringify(remoteMessage));
+    });
+    messaging()
+      .getInitialNotification()
+      .then(remoteMessage => {
+        if (remoteMessage) {
+          console.log(
+            'Notification caused app to open from quit state:',
+            JSON.stringify(remoteMessage)
+          );
+        }
+      });
 
+  }, []);
   return (
     <Provider store={store}>
       <NavigationContainer>
